@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>House Price Prediction</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="Types">Building Type:</label>
+                <select id="Types" name="Types" required>
+                    <option value="" {% if selected_building is none %}selected{% endif %}>Select</option>
+                    <option value="Apartment" {% if selected_building == "Apartment" %}selected{% endif %}>Apartment</option>
+                    <option value="Bungalows" {% if selected_building == "Bungalows" %}selected{% endif %}>Bungalows</option>
+                    <option value="Studio Apartment" {% if selected_building == "Studio Apartment" %}selected{% endif %}>Studio Apartment</option>
+                    <option value="Villa" {% if selected_building == "Villa" %}selected{% endif %}>Villa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Regions">Region:</label>
+                <select id="Regions" name="Regions" required>
+                    <option value="" {% if selected_region is none %}selected{% endif %}>Select</option>
+                    <option value="Andheri" {% if selected_region == "Andheri" %}selected{% endif %}>Andheri</option>
+                    <option value="Bandra" {% if selected_region == "Bandra" %}selected{% endif %}>Bandra</option>
+                    <option value="Dadar" {% if selected_region == "Dadar" %}selected{% endif %}>Dadar</option>
+                    <option value="Ghatkopar" {% if selected_region == "Ghatkopar" %}selected{% endif %}>Ghatkopar</option>
+                    <option value="Lower Parel" {% if selected_region == "Lower Parel" %}selected{% endif %}>Lower Parel</option>
+                    <option value="Mumbai" {% if selected_region == "Mumbai" %}selected{% endif %}>Mumbai</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="BHK">Number of Bedrooms (BHK):</label>
+                <input type="number" id="BHK" name="BHK" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Area">Area (in sq ft):</label>
+                <input type="number" id="Area" name="Area" min="100" required>
+            </div>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result">
+                <h2>Predicted House Price:</h2>
+                <p>${{ prediction }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
