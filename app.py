@@ -14,6 +14,7 @@ building_mapping={
 "Studio Apartment": 2,
 "Villa": 3,
 }
+
 region_mapping={
 "Andheri": 0,
 "Bandra": 1,
@@ -22,13 +23,14 @@ region_mapping={
 "Lower Parel": 4,
 "Mumbai": 5,
 }
+
 @app.route('/')
 def home():
     return render_template('index.html', prediction=None)
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    if request.method == 'POST':
+    # if request.method == 'POST':
         input_building_mapping=request.form['Types']
         input_region_mapping=request.form['Regions']
         input_bhk=int(request.form['BHK'])
@@ -45,7 +47,7 @@ def predict():
         
         return render_template('index.html', prediction=prediction)
 
-    return render_template('index.html', prediction=None)
+    # return render_template('index.html', prediction=None)
 
 if __name__ == '__main__':
     app.run(debug=True)
