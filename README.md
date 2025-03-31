@@ -19,5 +19,5 @@ Experiment Tracking: MLflow is used to log and track model performance and hyper
 https://dagshub.com/sidheshsahu/House_Price_Prediction_Pipeline
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/sidheshsahu/House_Price_Prediction/blob/main/Ml%20Pipeline.png)
 
